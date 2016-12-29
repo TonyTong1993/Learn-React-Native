@@ -12,6 +12,7 @@ import {
   PixelRatio,
   Button,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 //获取屏幕的尺寸
 var screen_width = Dimensions.get('window').width;
@@ -39,18 +40,34 @@ class Login extends Component {
               console.log('login')
             }}
             style={[styles.loginButton,styles.center,styles.alignSelf,styles.marginTop]}
-            underlayColor='#b0e0e6'>
+            underlayColor='#4682b4'>
             <Text style={styles.loginTextStyle}>
               登录
             </Text>
           </TouchableHighlight>
-          <Button style = {styles.marginTop}
-                  onPress = {() => {
-                    console.log('assistButton clicked');
-                  }}
-                  color  = 'rgb(0,163,234)'
-                  title  = '忘记密码?'
-          ></Button>
+          <View style={[styles.assistBox,styles.marginTop]}>
+           <TouchableOpacity
+                    onPress={() =>{
+                       console.log('assistButton clicked');
+                    }}
+                    style={[styles.assistButton,styles.marginLeft]}
+                    activeOpacity={0.5}>
+                    <Text style={[styles.assistText]}>
+                      忘记密码?
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() =>{
+                       console.log('assistButton clicked');
+                    }}
+                    style={[styles.assistButton]}
+                    activeOpacity={0.5}>
+                    <Text style={[styles.assistText]}>
+                      新用户注册
+                    </Text>
+           </TouchableOpacity>
+          </View>
+       
       </View>
     );
   }
@@ -98,8 +115,21 @@ loginButton:{
   backgroundColor:'rgb(0,163,234)',
   borderRadius:4,
 },
+assistBox:{
+  width:screen_width,
+  height:16,
+  flexDirection:'row',
+  justifyContent: 'space-around',
+},
 assistButton:{
-
+  
+},
+assistText:{
+  fontSize:14,
+  color:'rgb(0,163,234)'
+},
+assistLeft:{
+  marginLeft:-50,
 }
 });
 
